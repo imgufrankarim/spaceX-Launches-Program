@@ -1,0 +1,300 @@
+<h3>SpaceX Launch Program</h3>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <h5>Filters</h5>
+      <h6 class="text-center">Launch Year</h6>
+      <hr />
+      <div class="row content-center">
+        <div class="btn-group ml-3">
+          <button
+            type="button"
+            class="btn btn-primary btn mr-3 mb-3"
+            (click)="loadYearlyData(2008)"
+          >
+            2008
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary mb-3"
+            (click)="loadYearlyData(2009)"
+          >
+            2009
+          </button>
+        </div>
+      </div>
+      <div class="row content-center">
+        <div class="btn-group ml-3">
+          <button
+            type="button"
+            class="btn btn-primary btn mr-3 mb-3"
+            (click)="loadYearlyData(2010)"
+          >
+            2010
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary mb-3"
+            (click)="loadYearlyData(2011)"
+          >
+            2011
+          </button>
+        </div>
+      </div>
+      <div class="row content-center">
+        <div class=" btn-group ml-3">
+          <button
+            type="button"
+            class="btn btn-primary btn mr-3 mb-3"
+            (click)="loadYearlyData(2012)"
+          >
+            2012
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary mb-3"
+            (click)="loadYearlyData(2013)"
+          >
+            2013
+          </button>
+        </div>
+      </div>
+      <div class="row content-center">
+        <div class=" btn-group ml-3">
+          <button
+            type="button"
+            class="btn btn-primary btn mr-3 mb-3"
+            (click)="loadYearlyData(2014)"
+          >
+            2014
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary mb-3"
+            (click)="loadYearlyData(2015)"
+          >
+            2015
+          </button>
+        </div>
+      </div>
+      <div class="row content-center">
+        <div class=" btn-group ml-3">
+          <button
+            type="button"
+            class="btn btn-primary btn mr-3 mb-3"
+            (click)="loadYearlyData(2016)"
+          >
+            2016
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary mb-3"
+            (click)="loadYearlyData(2017)"
+          >
+            2017
+          </button>
+        </div>
+      </div>
+      <div class="row content-center">
+        <div class=" btn-group ml-3">
+          <button
+            type="button"
+            class="btn btn-primary btn mr-3 mb-3"
+            (click)="loadYearlyData(2018)"
+          >
+            2018
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary mb-3"
+            (click)="loadYearlyData(2019)"
+          >
+            2019
+          </button>
+        </div>
+      </div>
+      <br />
+      <h6 class="text-center">Successful Launch</h6>
+      <hr />
+      <div class="row content-center">
+        <div class=" btn-group ml-3">
+          <button
+            type="button"
+            (click)="launchSuccess(true)"
+            class="btn btn-primary btn mr-3"
+          >
+            True
+          </button>
+          <button
+            type="button"
+            (click)="launchSuccess(false)"
+            class="btn btn-primary btn mr-3"
+          >
+            False
+          </button>
+        </div>
+      </div>
+      <br />
+      <h6 class="text-center">Successful Landing</h6>
+      <hr />
+      <div class="row content-center">
+        <div class=" btn-group ml-3">
+          <button type="button" (click)="landSuccess(true)" class="btn btn-primary btn mr-3">True</button>
+          <button type="button" (click)="landSuccess(false)"class="btn btn-primary btn mr-3">False</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="row" *ngIf="loadAllData">
+        <div class="col-md-5 col-lg-3" *ngFor="let data of spaceapi">
+          <div class="card my-2 align-items-center">
+            <img
+              [src]="data.links.mission_patch"
+              class="card-img-top"
+              style="width:180px; height:110px;"
+            /><br />
+            <div class="card-body text-center">
+              <span>
+                <strong
+                  >{{ data.mission_name }} #{{ data.flight_number }}</strong
+                ></span
+              ><br />
+              <span
+                ><strong>Mission Ids:{{ data.mission_id }}</strong></span
+              >
+              <br />
+              <span> <strong> Launch Year: </strong> </span
+              ><span>{{ data.launch_year }}</span
+              ><br />
+              <span> <strong> Launch success: </strong></span>
+              <span>{{ data.launch_success }}</span> <br />
+              <span> <strong> Land success: </strong></span>
+              <span>{{ data.land_success }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- This card is for successful launch Data display-->
+      <div class="row" *ngIf="successfullLaunchData">
+        <div class="col-md-5 col-lg-3" *ngFor="let data of successlaunch">
+          <div class="card my-2 align-items-center">
+            <img
+              [src]="data.links.mission_patch"
+              class="card-img-top"
+              style="width:180px; height:110px;"
+            /><br />
+            <div class="card-body text-center">
+              <span>
+                <strong
+                  >{{ data.mission_name }} #{{ data.flight_number }}</strong
+                ></span
+              ><br />
+              <span
+                ><strong>Mission Ids:{{ data.mission_id }}</strong></span
+              >
+              <br />
+              <span> <strong> Launch Year: </strong> </span
+              ><span>{{ data.launch_year }}</span
+              ><br />
+              <span> <strong> Launch success: </strong></span>
+              <span>{{ data.launch_success }}</span> <br />
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- This card is for un-successful launch data display -->
+      <div class="row" *ngIf="loadUnSuccessfulLaunch">
+        <div class="col-md-5 col-lg-3" *ngFor="let data of failedLanchData">
+          <div class="card my-2 align-items-center">
+            <img
+              [src]="data.links.mission_patch"
+              class="card-img-top"
+              style="width:180px; height:110px;"
+            /><br />
+            <div class="card-body text-center">
+              <span>
+                <strong
+                  >{{ data.mission_name }} #{{ data.flight_number }}</strong
+                ></span
+              ><br />
+              <span
+                ><strong>Mission Ids:{{ data.mission_id }}</strong></span
+              >
+              <br />
+              <span> <strong> Launch Year: </strong> </span
+              ><span>{{ data.launch_year }}</span
+              ><br />
+              <span> <strong> Launch success: </strong></span>
+              <span>{{ data.launch_success }}</span> <br />
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Dispaly Land data -->
+      <div class="row" *ngIf="loadSuccessLandData">
+        <div class="col-md-5 col-lg-3" *ngFor="let data of successLandData">
+          <div class="card my-2 align-items-center">
+            <img
+              [src]="data.links.mission_patch"
+              class="card-img-top"
+              style="width:180px; height:110px;"
+            /><br />
+            <div class="card-body text-center">
+              <span>
+                <strong
+                  >{{ data.mission_name }} #{{ data.flight_number }}</strong
+                ></span
+              ><br />
+              <span
+                ><strong>Mission Ids:{{ data.mission_id }}</strong></span
+              >
+              <br />
+              <span> <strong> Land success: </strong></span>
+              <span>{{ data.land_success }}</span>{{data.land_success}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!--  Dipaly yearly Data -->  
+      <div class="row" *ngIf="displayYearlyData">
+        <div class="col-md-5 col-lg-3" *ngFor="let data of yearlyData">
+          <div class="card my-2 align-items-center">
+            <img
+              [src]="data.links.mission_patch"
+              class="card-img-top"
+              style="width:180px; height:110px;"
+            /><br />
+            <div class="card-body text-center">
+              <span>
+                <strong
+                  >{{ data.mission_name }} #{{ data.flight_number }}</strong
+                ></span
+              ><br />
+              <span
+                ><strong>Mission Ids:{{ data.mission_id }}</strong></span
+              >
+              <br />
+              <span> <strong> Launch Year: </strong> </span
+              ><span>{{ data.launch_year }}</span
+              ><br />
+              <span> <strong> Launch success: </strong></span>
+              <span>{{ data.launch_success }}</span> <br />
+              <span> <strong> Land success: </strong></span>
+              <span>{{ data.land_success }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer text-center">
+  <strong> Developed by: {{ name }} </strong>
+</div>
